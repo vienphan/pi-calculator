@@ -29,7 +29,7 @@ function addDataPoint(alpha) {
   errorValues.push(errorPercent);
 
   document.getElementById("result").innerText =
-    `α = ${alpha.toFixed(1)}° → π ≈ ${pi.toFixed(6)} | Error = ${errorPercent.toFixed(3)}%`;
+    `α = ${alpha.toFixed(1)}° → π ≈ ${pi.toFixed(6)} | Sai số = ${errorPercent.toFixed(3)}%`;
 
   drawCircle(alpha);
   updateCharts();
@@ -71,7 +71,7 @@ function updateCharts() {
         labels: alphaValues,
         datasets: [
           {
-            label: "Approximated π",
+            label: "Giá trị π xấp xỉ",
             data: piValues,
             borderColor: "rgb(37,99,235)",
             backgroundColor: "rgba(37,99,235,0.2)",
@@ -79,7 +79,7 @@ function updateCharts() {
             tension: 0.2
           },
           {
-            label: "True π = 3.1416",
+            label: "Giá trị thật π = 3.1416",
             data: alphaValues.map(() => Math.PI),
             borderColor: "rgba(220,38,38,0.7)",
             borderDash: [5, 5],
@@ -89,12 +89,12 @@ function updateCharts() {
       },
       options: {
         plugins: {
-          title: { display: true, text: "π Approximation vs α" },
+          title: { display: true, text: "So sánh π xấp xỉ và π thật" },
           legend: { position: "bottom" }
         },
         scales: {
-          x: { title: { display: true, text: "Angle α (degrees)" } },
-          y: { title: { display: true, text: "Value of π" }, min: 2.5, max: 3.5 }
+          x: { title: { display: true, text: "Góc α (độ)" } },
+          y: { title: { display: true, text: "Giá trị π" }, min: 2.5, max: 3.5 }
         }
       }
     });
@@ -106,7 +106,7 @@ function updateCharts() {
       data: {
         labels: alphaValues,
         datasets: [{
-          label: "Error (%)",
+          label: "Sai số (%)",
           data: errorValues,
           borderColor: "rgb(220,38,38)",
           backgroundColor: "rgba(220,38,38,0.1)",
@@ -116,12 +116,12 @@ function updateCharts() {
       },
       options: {
         plugins: {
-          title: { display: true, text: "Error (%) vs α" },
+          title: { display: true, text: "Sai số (%) theo góc α" },
           legend: { position: "bottom" }
         },
         scales: {
-          x: { title: { display: true, text: "Angle α (degrees)" } },
-          y: { title: { display: true, text: "Error (%)" }, min: 0, max: 20 }
+          x: { title: { display: true, text: "Góc α (độ)" } },
+          y: { title: { display: true, text: "Sai số (%)" }, min: 0, max: 20 }
         }
       }
     });
